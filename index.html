@@ -465,20 +465,34 @@
 
 
 <script>
-/* ---------------- SECTION NAVIGATION ---------------- */
 function nextSection(id) {
-  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  const music = document.getElementById('bgMusic');
+  const video1 = document.querySelector('#video1 video');
+  const video2 = document.querySelector('#video2 video');
+
+  // Hide all sections
+  document.querySelectorAll('.section').forEach(sec => {
+    sec.classList.remove('active');
+  });
+
+  // Show selected section
   document.getElementById(id).classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
-}
 
-/* ---------------- MUSIC START ---------------- */
-const music = document.getElementById('bgMusic');
-const overlay = document.getElementById('musicOverlay');
-overlay.addEventListener('click', () => {
-  music.play();
-  overlay.style.display = 'none';
-});
+  // 🎵 Stop background music in video sections
+  if (id === 'video1' || id === 'video2') {
+    music.pause();
+  }
+
+  // 🎬 Stop videos if leaving video sections
+  if (video1) video1.pause();
+  if (video2) video2.pause();
+
+  // ▶️ Restart music when returning to first section
+  if (id === 'love') {
+    music.play();
+  }
+}
 
 /* ---------------- FLOATING HEARTS ---------------- */
 const hearts = ['❤️','💖','💘','💕','💞'];
@@ -647,5 +661,6 @@ function randomColor() {
 
 
 </body>
+
 
 </html>
