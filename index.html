@@ -465,8 +465,18 @@
 
 
 <script>
+
+/* ---------------- MUSIC START ---------------- */
+const music = document.getElementById('bgMusic');
+const overlay = document.getElementById('musicOverlay');
+
+overlay.addEventListener('click', () => {
+  music.play();
+  overlay.style.display = 'none';
+});
+
+/* ---------------- SECTION NAVIGATION ---------------- */
 function nextSection(id) {
-  const music = document.getElementById('bgMusic');
   const video1 = document.querySelector('#video1 video');
   const video2 = document.querySelector('#video2 video');
 
@@ -479,16 +489,16 @@ function nextSection(id) {
   document.getElementById(id).classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // 🎵 Stop background music in video sections
+  // Stop music in video sections
   if (id === 'video1' || id === 'video2') {
     music.pause();
   }
 
-  // 🎬 Stop videos if leaving video sections
+  // Pause videos when leaving
   if (video1) video1.pause();
   if (video2) video2.pause();
 
-  // ▶️ Restart music when returning to first section
+  // Restart music if returning to first section
   if (id === 'love') {
     music.play();
   }
@@ -496,6 +506,7 @@ function nextSection(id) {
 
 /* ---------------- FLOATING HEARTS ---------------- */
 const hearts = ['❤️','💖','💘','💕','💞'];
+
 setInterval(() => {
   const h = document.createElement('div');
   h.className = 'heart';
@@ -554,27 +565,33 @@ function showSurprise() {
 function closePopup() {
   document.getElementById("surprisePopup").style.display = "none";
   document.getElementById("giftContent").innerHTML = "";
-
-  nextSection('poem'); // 💖 Go to poem section
+  nextSection('poem');
 }
-
 
 /* ---------------- OPEN GIFT ---------------- */
 function openGift(num) {
   let content = "";
 
-  if (num == 1) content = '<img src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyejA3c2htMmRkZm15emRnNGZ0bGR6dHFkcm52dnZicGM3YmljeGpueiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qFmdpUKAFZ6rMobzzu/giphy.gif" width="250" style="border-radius:15px">';
-  if (num == 2) content = '<img src="https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUyYXBkc3FhaDMzenJvaWNuc2NjMnhnbDRqYW15aXpuZzhhbmQzNDB3aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wmumIdW2XyIaeHbXXb/giphy.gif" width="250" style="border-radius:15px">';
-  if (num == 3) content = '<video src="video-3.mp4" controls width="250" style="border-radius:15px"></video>';
-  if (num == 4) content = '<video src="video-4.mp4" controls width="250" style="border-radius:15px"></video>';
-  if (num == 5) content = '<h3 style="color:#ff1493">💌 Thank you so much for being with me love you so much pappuu..... ❤️</h3>';
+  if (num == 1)
+    content = '<img src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyejA3c2htMmRkZm15emRnNGZ0bGR6dHFkcm52dnZicGM3YmljeGpueiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qFmdpUKAFZ6rMobzzu/giphy.gif" width="250" style="border-radius:15px">';
+
+  if (num == 2)
+    content = '<img src="https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUyYXBkc3FhaDMzenJvaWNuc2NjMnhnbDRqYW15aXpuZzhhbmQzNDB3aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wmumIdW2XyIaeHbXXb/giphy.gif" width="250" style="border-radius:15px">';
+
+  if (num == 3)
+    content = '<video src="video-3.mp4" controls width="250" style="border-radius:15px"></video>';
+
+  if (num == 4)
+    content = '<video src="video-4.mp4" controls width="250" style="border-radius:15px"></video>';
+
+  if (num == 5)
+    content = '<h3 style="color:#ff1493">💌 Thank you so much for being with me love you so much pappuu..... ❤️</h3>';
 
   document.getElementById("giftContent").innerHTML = content;
-
-  burstConfetti(); // 🎉 celebration on gift open
+  burstConfetti();
 }
 
-/* ---------------- CONFETTI BURST ---------------- */
+/* ---------------- CONFETTI ---------------- */
 function burstConfetti() {
   for (let i = 0; i < 80; i++) {
     let conf = document.createElement("div");
@@ -610,57 +627,13 @@ function randomColor() {
   const colors = ["#ff1493", "#ff69b4", "#ffd700", "#00ffff", "#00ff7f", "#ffffff"];
   return colors[Math.floor(Math.random() * colors.length)];
 }
+
 </script>
 
-
-
-  <script>
-    const reactions = {
-      q1: "Aww! I remember that too ❤️",
-      q2: "Yay! That was such a magical date 💖",
-      q3: "How sweet! I loved that gift 🥰",
-      q4: "Haha! That memory always makes me laugh 😂",
-      q5: "Dream destination! I can’t wait 🌸"
-    };
-
-    // Vibrant colors suitable for pink background
-    const colors = {
-      q1: "#00BFFF", // DeepSkyBlue
-      q2: "#32CD32", // LimeGreen
-      q3: "#FFD700", // Gold
-      q4: "#00BFFF", // DeepSkyBlue
-      q5: "#32CD32"  // LimeGreen
-    };
-
-    function checkAnswers() {
-      for (let i = 1; i <= 5; i++) {
-        const input = document.getElementById('q' + i);
-        const reaction = document.getElementById('r' + i);
-        if (input.value.trim() !== '') {
-          reaction.textContent = reactions['q' + i];
-          reaction.style.color = colors['q' + i];
-          reaction.style.fontWeight = "bold";
-          reaction.style.fontSize = "1.3rem";
-          reaction.style.textShadow = `
-        0 0 5px ${colors['q' + i]},
-        0 0 10px ${colors['q' + i]},
-        0 0 15px ${colors['q' + i]},
-        0 0 20px ${colors['q' + i]}
-      `;
-        } else {
-          reaction.textContent = "Hmm... think a little more 😉";
-          reaction.style.color = "#FFFFFF";
-          reaction.style.fontWeight = "normal";
-          reaction.style.fontSize = "1rem";
-          reaction.style.textShadow = "none";
-        }
-      }
-    }
-  </script>
- 
 
 
 </body>
 
 
 </html>
+
