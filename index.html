@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Love Story Shiva ❤️ Santhya </title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ff5f7e;
+      /* solid romantic pink */
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* Sections */
+    .section {
+      display: none;
+      padding: 60px 20px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .active {
+      display: block;
+    }
+
+    /* Buttons */
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      background: #ff1493;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #fff;
+      color: #ff1493;
+    }
+
+    /* Surprise Popup */
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 600px;
+      animation: pop 0.5s ease;
+    }
+
+    @keyframes pop {
+      from {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Gift Cards */
+    .gift-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .gift {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(45deg, #ff69b4, #ff1493);
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .gift:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #ff1493;
+    }
+
+    /* Celebration animation */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: red;
+      animation: fall 3s linear infinite;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-100px);
+      }
+
+      to {
+        transform: translateY(100vh);
+      }
+    }
+
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px #ffb6c1, 0 0 40px #ff69b4;
+    }
+
+    p {
+      font-size: 1.3rem;
+      margin-bottom: 25px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Buttons */
+    button {
+      padding: 16px 45px;
+      font-size: 1.3rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      background: #ff3366;
+      color: #fff;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 192, 203, 0.8);
+      margin-top: 20px;
+      animation: heartbeat 1.4s infinite;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.15);
+      box-shadow: 0 15px 50px rgba(255, 105, 180, 0.8), 0 0 30px rgba(255, 192, 203, 0.9);
+    }
+
+    @keyframes heartbeat {
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .photo {
+      height: 250px;
+      border-radius: 25px;
+      background-size: cover;
+      background-position: center;
+      animation: zoom 18s infinite;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    @keyframes zoom {
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    input[type=text] {
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      width: 60%;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .poem {
+      margin-top: 40px;
+      font-size: 1.4rem;
+      font-style: italic;
+      line-height: 2;
+      text-shadow: 0 0 10px #ffb6c1;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -40px;
+      font-size: 24px;
+      animation: floatUp 8s linear infinite;
+      opacity: 0.9;
+      text-shadow: 0 0 8px #ff69b4, 0 0 12px #ffc0cb;
+    }
+
+    @keyframes floatUp {
+      to {
+        transform: translateY(-130vh) scale(2);
+        opacity: 0;
+      }
+    }
+
+    /* Music overlay */
+    #musicOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ff5f7e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      flex-direction: column;
+    }
+
+    #musicOverlay span {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 3rem;
+        /* smaller headline */
+      }
+
+      p,
+      .poem {
+        font-size: 1.1rem;
+        /* smaller text */
+        padding: 0 10px;
+      }
+
+      button {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+        margin-top: 15px;
+      }
+
+      input[type=text] {
+        width: 90%;
+        /* take most of the screen */
+        font-size: 1rem;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        /* smaller images on mobile */
+        gap: 15px;
+      }
+
+      .photo {
+        height: 180px;
+        /* smaller height for photos */
+      }
+
+      video {
+        width: 95% !important;
+        /* video scales to almost full width */
+        max-height: 50vh;
+        /* prevent overflow on mobile */
+      }
+
+      .poem {
+        font-size: 1.2rem;
+        line-height: 1.6;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      button {
+        padding: 10px 25px;
+        font-size: 1rem;
+      }
+
+      .poem {
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Music Overlay -->
+  <div id="musicOverlay">
+    🎵 Tap anywhere to play our love song
+    <span>💖💖💖</span>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" src="audio.mpeg" loop></audio>
+
+  <!-- Step 1: Love and Care -->
+  <section class="section active" id="love">
+    <h1>My Beloved ❤️</h1>
+    <p>Every moment with you is precious. My love and care for you are endless. You are my world.</p>
+    <button onclick="nextSection('memories')">Next: Memories 🌸</button>
+  </section>
+
+  <!-- Step 2: Memories -->
+  <section class="section" id="memories">
+    <h1>Our Memories 📸</h1>
+    <div class="gallery">
+      <div class="photo" style="background-image:url('image-1.jpeg')"></div>
+      <div class="photo" style="background-image:url('image-2.jpeg')"></div>
+      <div class="photo" style="background-image:url('image-3.jpeg')"></div>
+      <div class="photo" style="background-image:url('image-4.jpeg')"></div>
+      <div class="photo" style="background-image:url('image-5.jpeg')"></div>
+    </div>
+    <button onclick="nextSection('questions')">Next: Quiz About Us ❓</button>
+  </section>
+
+  <!-- Step 3: Questions -->
+  <section class="section" id="questions">
+    <h1>Do You Remember? 🤔</h1>
+    <p>Answer these fun questions about our journey together!</p>
+
+    <div class="question">
+      <input type="text" id="q1" placeholder="Where did we first meet?" />
+      <p class="reaction" id="r1"></p>
+    </div>
+
+    <div class="question">
+      <input type="text" id="q2" placeholder="Your favorite date together?" />
+      <p class="reaction" id="r2"></p>
+    </div>
+
+    <div class="question">
+      <input type="text" id="q3" placeholder="Your first gift to me?" />
+      <p class="reaction" id="r3"></p>
+    </div>
+
+    <div class="question">
+      <input type="text" id="q4" placeholder="Our funniest memory?" />
+      <p class="reaction" id="r4"></p>
+    </div>
+
+    <div class="question">
+      <input type="text" id="q5" placeholder="Place we want to visit together?" />
+      <p class="reaction" id="r5"></p>
+    </div>
+
+    <button onclick="checkAnswers()">See My Reactions ❤️</button>
+    <button onclick="nextSection('video1')" style="margin-left:10px;">Next: Video 🎞️</button>
+  </section>
+
+  <!-- Video 1 -->
+  <section class="section" id="video1">
+    <h1>Our Love Story 🎬</h1>
+    <video src="video-1.mp4" controls autoplay muted style="width:80%; border-radius:25px;"></video>
+    <br>
+    <button onclick="nextSection('video2')">Next: Another Memory 🎥</button>
+  </section>
+
+  <!-- Video 2 -->
+  <section class="section" id="video2">
+    <h1>Special Moments 💕</h1>
+    <video src="video-2.mp4" controls autoplay muted style="width:80%; border-radius:25px;"></video>
+    <br>
+    <button onclick="showSurprise()">🎁 Click for Surprise</button>
+  </section>
+
+  <!-- Popup -->
+  <div class="popup" id="surprisePopup">
+    <div class="popup-content">
+      <h2>🎉 Open Your 5 Love Gifts 🎉</h2>
+
+      <div class="gift-container">
+        <div class="gift" onclick="openGift(1)">🎁</div>
+        <div class="gift" onclick="openGift(2)">🎁</div>
+        <div class="gift" onclick="openGift(3)">🎁</div>
+        <div class="gift" onclick="openGift(4)">🎁</div>
+        <div class="gift" onclick="openGift(5)">🎁</div>
+      </div>
+
+      <div id="giftContent" style="margin-top:20px;"></div>
+
+      <br>
+      <button onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+  <!-- Step 6: Poem -->
+  <section class="section" id="poem">
+    <h1>என் அன்புக்குரிய கணவனுக்கு 💖</h1>
+    <p class="poem">
+      என் உயிரின் நீ, என் உலகத்தின் ஒளி,<br>
+      உன் கண்கள் என் இதயத்தை துடிக்க வைக்கும்,<br>
+      உன் புன்னகை என் வாழ்வின் வண்ணம்.<br><br>
+
+      ஒவ்வொரு நினைவிலும் நீ என் வாசல் வாசலாக இருக்கின்றாய்,<br>
+      ஒவ்வொரு நொடியும் உன்னோடு வாழ ஆசைப்படுகிறேன்.<br><br>
+
+      நீ எனக்கு காதலின் அருமை,<br>
+      என் சிரிப்பும், என் சிந்தனையும் உன்னோடு மட்டுமே பூர்த்தி.<br>
+      என் இதயத்தின் ஒவ்வொரு துடிப்பும் உன்னோடு இணைந்தது,<br>
+      என்றும் என் கணவன், என்றும் என் அன்பு – நிஜமாகக் காத்திருக்கும்.
+    </p>
+    <button onclick="nextSection('love')">Restart 💞</button>
+  </section>
+
+
+
+<script>
+/* ---------------- SECTION NAVIGATION ---------------- */
+function nextSection(id) {
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ---------------- MUSIC START ---------------- */
+const music = document.getElementById('bgMusic');
+const overlay = document.getElementById('musicOverlay');
+overlay.addEventListener('click', () => {
+  music.play();
+  overlay.style.display = 'none';
+});
+
+/* ---------------- FLOATING HEARTS ---------------- */
+const hearts = ['❤️','💖','💘','💕','💞'];
+setInterval(() => {
+  const h = document.createElement('div');
+  h.className = 'heart';
+  h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+  h.style.left = Math.random() * 100 + 'vw';
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 9000);
+}, 400);
+
+/* ---------------- QUIZ REACTIONS ---------------- */
+const reactions = {
+  q1: "Aww! I remember that too ❤️",
+  q2: "Yay! That was such a magical date 💖",
+  q3: "How sweet! I loved that gift 🥰",
+  q4: "Haha! That memory always makes me laugh 😂",
+  q5: "Dream destination! I can’t wait 🌸"
+};
+
+const colors = {
+  q1: "#00BFFF",
+  q2: "#32CD32",
+  q3: "#FFD700",
+  q4: "#00BFFF",
+  q5: "#32CD32"
+};
+
+function checkAnswers() {
+  for (let i = 1; i <= 5; i++) {
+    const input = document.getElementById('q' + i);
+    const reaction = document.getElementById('r' + i);
+
+    if (input.value.trim() !== '') {
+      reaction.textContent = reactions['q' + i];
+      reaction.style.color = colors['q' + i];
+      reaction.style.fontWeight = "bold";
+      reaction.style.fontSize = "1.3rem";
+      reaction.style.textShadow =
+        `0 0 5px ${colors['q'+i]},
+         0 0 10px ${colors['q'+i]},
+         0 0 20px ${colors['q'+i]}`;
+    } else {
+      reaction.textContent = "Hmm... think a little more 😉";
+      reaction.style.color = "#fff";
+      reaction.style.fontWeight = "normal";
+      reaction.style.fontSize = "1rem";
+      reaction.style.textShadow = "none";
+    }
+  }
+}
+
+/* ---------------- POPUP ---------------- */
+function showSurprise() {
+  document.getElementById("surprisePopup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("surprisePopup").style.display = "none";
+  document.getElementById("giftContent").innerHTML = "";
+
+  nextSection('poem'); // 💖 Go to poem section
+}
+
+
+/* ---------------- OPEN GIFT ---------------- */
+function openGift(num) {
+  let content = "";
+
+  if (num == 1) content = '<img src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyejA3c2htMmRkZm15emRnNGZ0bGR6dHFkcm52dnZicGM3YmljeGpueiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qFmdpUKAFZ6rMobzzu/giphy.gif" width="250" style="border-radius:15px">';
+  if (num == 2) content = '<img src="https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUyYXBkc3FhaDMzenJvaWNuc2NjMnhnbDRqYW15aXpuZzhhbmQzNDB3aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wmumIdW2XyIaeHbXXb/giphy.gif" width="250" style="border-radius:15px">';
+  if (num == 3) content = '<video src="video-3.mp4" controls width="250" style="border-radius:15px"></video>';
+  if (num == 4) content = '<video src="video-4.mp4" controls width="250" style="border-radius:15px"></video>';
+  if (num == 5) content = '<h3 style="color:#ff1493">💌 Thank you so much for being with me love you so much pappuu..... ❤️</h3>';
+
+  document.getElementById("giftContent").innerHTML = content;
+
+  burstConfetti(); // 🎉 celebration on gift open
+}
+
+/* ---------------- CONFETTI BURST ---------------- */
+function burstConfetti() {
+  for (let i = 0; i < 80; i++) {
+    let conf = document.createElement("div");
+    conf.className = "confetti";
+    document.body.appendChild(conf);
+
+    let size = Math.random() * 8 + 5;
+    conf.style.width = size + "px";
+    conf.style.height = size + "px";
+    conf.style.backgroundColor = randomColor();
+    conf.style.left = window.innerWidth / 2 + "px";
+    conf.style.top = window.innerHeight / 2 + "px";
+
+    let angle = Math.random() * 2 * Math.PI;
+    let velocity = Math.random() * 6 + 4;
+
+    let x = Math.cos(angle) * velocity * 25;
+    let y = Math.sin(angle) * velocity * 25;
+
+    conf.animate([
+      { transform: "translate(0,0)", opacity: 1 },
+      { transform: `translate(${x}px, ${y + 400}px)`, opacity: 0 }
+    ], {
+      duration: 2500,
+      easing: "ease-out"
+    });
+
+    setTimeout(() => conf.remove(), 2500);
+  }
+}
+
+function randomColor() {
+  const colors = ["#ff1493", "#ff69b4", "#ffd700", "#00ffff", "#00ff7f", "#ffffff"];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+</script>
+
+
+
+  <script>
+    const reactions = {
+      q1: "Aww! I remember that too ❤️",
+      q2: "Yay! That was such a magical date 💖",
+      q3: "How sweet! I loved that gift 🥰",
+      q4: "Haha! That memory always makes me laugh 😂",
+      q5: "Dream destination! I can’t wait 🌸"
+    };
+
+    // Vibrant colors suitable for pink background
+    const colors = {
+      q1: "#00BFFF", // DeepSkyBlue
+      q2: "#32CD32", // LimeGreen
+      q3: "#FFD700", // Gold
+      q4: "#00BFFF", // DeepSkyBlue
+      q5: "#32CD32"  // LimeGreen
+    };
+
+    function checkAnswers() {
+      for (let i = 1; i <= 5; i++) {
+        const input = document.getElementById('q' + i);
+        const reaction = document.getElementById('r' + i);
+        if (input.value.trim() !== '') {
+          reaction.textContent = reactions['q' + i];
+          reaction.style.color = colors['q' + i];
+          reaction.style.fontWeight = "bold";
+          reaction.style.fontSize = "1.3rem";
+          reaction.style.textShadow = `
+        0 0 5px ${colors['q' + i]},
+        0 0 10px ${colors['q' + i]},
+        0 0 15px ${colors['q' + i]},
+        0 0 20px ${colors['q' + i]}
+      `;
+        } else {
+          reaction.textContent = "Hmm... think a little more 😉";
+          reaction.style.color = "#FFFFFF";
+          reaction.style.fontWeight = "normal";
+          reaction.style.fontSize = "1rem";
+          reaction.style.textShadow = "none";
+        }
+      }
+    }
+  </script>
+ 
+
+
+</body>
+
+</html>
